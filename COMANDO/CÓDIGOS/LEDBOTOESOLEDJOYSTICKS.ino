@@ -5,35 +5,35 @@
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 
-// OLED
+
 #define OLED_MOSI 23
 #define OLED_CLK 18
 #define OLED_DC 22
 #define OLED_CS 5
 #define OLED_RST 21
 
-// Botões
+
 #define BTN_ARM     25
 #define BTN_MODE    26
 #define BTN_DISARM  27
 
-// LED RGB
+
 #define LED_R 32
 #define LED_G 33
 #define LED_B 4
 
-// Joystick Esquerdo
+
 #define JOY_LX   34
 #define JOY_LY   35
 #define JOY_LSW  16
 
-// Joystick Direito
+
 #define JOY_RX   36   // VP
 #define JOY_RY   39   // VN
 #define JOY_RSW  17
 
 bool armado = false;
-int modo = 0;   // 0=SAFE 1=NORMAL 2=SPORT
+int modo = 0;   
 
 bool lastMode = HIGH;
 bool lastArm = HIGH;
@@ -72,9 +72,7 @@ void setup() {
 
 void loop() {
 
-  // =========================
-  // Leitura dos botões
-  // =========================
+ 
 
   bool armBtn = digitalRead(BTN_ARM);
   bool modeBtn = digitalRead(BTN_MODE);
@@ -101,9 +99,7 @@ void loop() {
   lastMode = modeBtn;
   lastDisarm = disarmBtn;
 
-  // =========================
-  // LED RGB
-  // =========================
+ 
 
   if (!armado) {
 
@@ -136,9 +132,7 @@ void loop() {
     }
   }
 
-  // =========================
-  // Joysticks
-  // =========================
+
 
   int joyLX = analogRead(JOY_LX);
   int joyLY = analogRead(JOY_LY);
@@ -149,9 +143,7 @@ void loop() {
   bool joyLSW = !digitalRead(JOY_LSW);
   bool joyRSW = !digitalRead(JOY_RSW);
 
-  // =========================
-  // Serial Monitor
-  // =========================
+ 
 
   Serial.print("LX:");
   Serial.print(joyLX);
@@ -191,9 +183,7 @@ void loop() {
       break;
   }
 
-  // =========================
-  // OLED
-  // =========================
+
 
   display.clearDisplay();
 
